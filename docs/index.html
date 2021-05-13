@@ -18,11 +18,37 @@
       background:rgba(246, 247, 251, 1);
     }
 
+    .navbar {
+      background: #dd4b39;
+    }
+
+    .navbar-brand {
+      color: black;
+      font-weight: 600;
+      font-size: 1.5rem;
+    }
+
+    .navbar-brand:hover {
+      color: black;
+    }
+
+    @media (max-width: 991px) {
+      .navbar-brand {
+        font-size: 1.25rem;
+      }
+    }
+
 
   </style>
 </head>
 <body>
- 
+
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Logo1</a>
+      <a class="navbar-brand" href="#">Logo2</a>
+    </div>
+  </nav>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
