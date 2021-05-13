@@ -15,15 +15,16 @@
     body {
       font-family: "Poppins", sans-serif;
       background:#ecf0f5;
-      padding-top: 70px;
+      padding-top: 100px;
+      padding-bottom: 80px;
     }
 
     .navbar {
-      background: #dd4b39;
+      background: #00ad72;
     }
 
     .navbar-brand {
-      color: black;
+      color: white;
       font-weight: 550;
       font-size: 1.4rem;
     }
@@ -36,12 +37,25 @@
       padding: 10px;
     }
 
+    .palettewrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .timebox {
       background: white;
       height: 50px;
+      width: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       box-shadow: 0 0 5px black;
       padding: 10px;
       font-size: 1.1em;
+      position: fixed;
+      right: 0;
+      top: 60px;
     }
 
     .palettebox {
@@ -54,7 +68,10 @@
       padding-bottom: 25px;
       overflow-y: hidden;
       overflow-x: auto;
-      white-space: nowrap; 
+      white-space: nowrap;
+      display: inline-block;
+      max-width: 80%;
+      margin-top: -50px;
     }
 
     .nobox {
@@ -86,15 +103,8 @@
       font-size: 1.3em;
     }
 
-    .iconb {
-      margin-left: 15px;
-      float: right;
-      font-size: 0.8em;
-      color: gray;
-    }
-
     .qbox {
-      border-left: 5px solid #4995c0;
+      border-left: 5px solid #00ad72;
       padding: 15px; 
       margin-bottom: 15px;
     }
@@ -126,12 +136,17 @@
     }
 
     .clearbut,.prevbut,.nextbut,.submitbut {
-      background:  #00c0ef;
+      background:  #00ad72;
       color: white;
       padding: 7px 15px;
       display: inline-block;
       border-radius: 5px;
       cursor: pointer;
+    }
+
+    .prevbut {
+      margin-left: 10px;
+      margin-right: 10px;
     }
 
     footer {
@@ -140,13 +155,16 @@
       box-shadow: 0 0 5px black;
       width: 100%;
       padding: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
     }
 
     .submitbut {
-      background: #00ad72;
+      background: #c4482b;
+      float: right;
+      margin-right: 10px;
     }
 
     .wrp1,.wrp2 {
@@ -157,9 +175,33 @@
       padding-top: 20px;
     }
 
+    .selectq {
+      border: 1px solid black;
+      font-size: 1.2em;
+      box-shadow: 0 0 5px black;
+    }
+
+    .done {
+      color: white;
+      background: #00ad72;
+    }
+
+    .visited {
+      color: white;
+      background: #deeb3f;
+    }
+
+    .markr {
+      color: white;
+      background: #2b91cd;
+    }
+
     @media (max-width: 991px) {
       .navbar-brand {
         font-size: 1.25rem;
+      }
+      .palettebox {
+        margin-top: 0;
       }
     }
 
@@ -180,6 +222,14 @@
       }
     }
 
+    @media (min-width: 768px) {
+      .collapse.dont-collapse-sm {
+        display: block;
+        height: auto !important;
+        visibility: visible;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -191,13 +241,19 @@
     </div>
   </nav>
 
+  <div class="timerwrapper">
+    <div class="timebox"></div>
+  </div>
+
   <div class="container">
     <div class="row">
-      <div class="col-md-8 palettewrapper">
+      <p class="d-sm-block d-md-none">
+        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapse2" role="button" aria-expanded="false" aria-controls="collapse2">
+          Question Number
+        </a>
+      </p>
+      <div class="palettewrapper collapse dont-collapse-sm" id="collapse2">
         <div class="palettebox"></div>
-      </div>
-      <div class="col-md-4 timerwrapper">
-        <div class="timebox"></div>
       </div>
     </div>
   </div>
@@ -207,25 +263,19 @@
       <div class="qwrapper">
         <p class="qhead">
           Question : <span class="qno">3</span>/9
-          <i class="fas fa-times iconb"></i>
-          <i class="fas fa-minus iconb"></i>
         </p>
 
         <div class="innerwrapper"></div>
-
-        <div class="oboxfoot">
-          <input type="checkbox" class="mark" id="mark" value="mark">
-          <label for="mark" class="marklabel">Mark for review</label>
-          <div class="clearbut">Clear</div>
-        </div>
       </div>
     </div>
   </div>
 
   <footer>
-    <div class="prevbut"><i class="fas fa-arrow-circle-left" style="margin-right: 5px;"></i>Prev</div>
-    <div class="nextbut">Next<i class="fas fa-arrow-circle-right" style="margin-left: 5px;"></i></div>
-    <div class="submitbut">Submit</div>
+    <div class="container">
+      <div class="prevbut"><i class="fas fa-arrow-circle-left" style="margin-right: 5px;"></i>Prev</div>
+      <div class="nextbut">Next<i class="fas fa-arrow-circle-right" style="margin-left: 5px;"></i></div>
+      <div class="submitbut">Submit</div>
+    </div>
   </footer>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"crossorigin="anonymous"></script>
@@ -239,8 +289,10 @@
     for(i=0;i<qno;i++)
     {
       var a=i+1;
-      $(".palettebox").append('<div class="nobox"><p class="number">'+a+'</p></div>')
+      $(".palettebox").append('<div class="nobox qbox'+i+'"><p class="number">'+a+'</p></div>')
     }
+
+    $(".qbox0").addClass("selectq");
 
     var countDownTime = 600;
     function countDownTimer() {
@@ -268,55 +320,72 @@
       choice: ['Yes','100% yes','a and b','none'],
       answer: 1,
       chosen: '',
-      type: 'p'
+      type: 'p',
+      mark: 0
     },
     {
       question: 'Hello, I am Shubham Jain and I am a -',
       choice: ['Front-end developer','Mechanic','Doctor','Lawyer'],
       answer: 1,
-      type: 'nop'
+      chosen: '',
+      type: 'nop',
+      mark: 0
     },
     {
       question: 'I am a CS student in - ',
       choice: ['NLU','Madras Medical college','IIIT Guwahati','IIM ahmedabad'],
       answer: 3,
-      type: 'nop'
+      chosen: '',
+      type: 'nop',
+      mark: 0
     },
     {
       question: 'Number of internships I have completed -  ',
       choice: ['100','1','1000','10000'],
       answer: 2,
-      type: 'nop'
+      chosen: '',
+      type: 'nop',
+      mark: 0
     },
     {
       question: 'Skills I have - ',
       choice: ['Reading minds','car repair, scooter repair','cleaning, cooking','HTML, CSS, JS, Jquery, Bootstrap, RestAPI'],
       answer: 4,
-      type: 'nop'
+      chosen: '',
+      type: 'nop',
+      mark: 0
     },
     {
       question: 'My role in my prior internship -',
       choice: ['Javascript developer','CEO','Vice president','Customer'],
       answer: 1,
-      type: 'nop'
+      chosen: '',
+      type: 'nop',
+      mark: 0
     },
     {
       question: 'I am also -',
       choice: ['PM of india','Professor in IIT Delhi','Microsoft Learn Student Ambassador','Doctor in AIIMS'],
       answer: 3,
-      type: 'nop'
+      chosen: '',
+      type: 'nop',
+      mark: 0
     },
     {
       question: 'Do I have a laptop and active internet connection?',
       choice: ['Yes','Yeah','Yup','All of these'],
       answer: 4,
-      type: 'nop'
+      chosen: '',
+      type: 'nop',
+      mark: 0
     },
     {
       question: 'What score would you give to my project? ',
       choice: ['1/10','10/10','0/10','-1/10'],
       answer: 2,
-      type: 'nop'
+      chosen: '',
+      type: 'nop',
+      mark: 0
     }
     ]
     z=0;
@@ -331,7 +400,7 @@
         $(".innerwrapper").append('<div class="qbox"></div><div class="optionbox"></div>');
       }
       else {
-        $(".innerwrapper").append('<div class="container-fluid"><div class="row"><div class="col-md-6 wrp1"><p>'+a.p+'</p><ul><li>'+a.p1+'</li><li>'+a.p2+'</li><li>'+a.p3+'</li></ul></div><div class="col-md-6 wrp2"><div class="qbox"></div><div class="optionbox"></div></div></div></div>');
+        $(".innerwrapper").append('<div class="container-fluid"><div class="row"><div class="col-md-6 wrp1"><p class="d-sm-block d-md-none"><a class="btn btn-primary" data-bs-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapse1">Paragraph</a></p><div class="collapse dont-collapse-sm" id="collapse1"><p>'+a.p+'</p><ul><li>'+a.p1+'</li><li>'+a.p2+'</li><li>'+a.p3+'</li></ul></div></div><div class="col-md-6 wrp2"><div class="qbox"></div><div class="optionbox"></div></div></div></div>');
       }
       $(".qbox").html(a.question);
 
@@ -339,6 +408,13 @@
       for(i=0;i<4;i++)
       {
         $(".optionbox").append('<input type="radio" class="option" id="'+i+'" name="q'+z+'" value="'+i+'"><label for="'+i+'" class="optionlabel">'+a.choice[i]+'</label><br>');
+      }
+
+      $(".innerwrapper").append('<div class="oboxfoot"><input type="checkbox" class="mark" name="mark" id="mark'+z+'" value="mark'+z+'"><label for="mark'+z+'" class="marklabel">Mark for review</label><div class="clearbut">Clear</div></div>');
+
+      if(questions[z].mark==1)
+      {
+        $('input[value=mark'+z+']').attr('checked',true);
       }
 
       if(questions[z].chosen=='')
@@ -353,17 +429,31 @@
       var s = $(this).val()
       questions[z].chosen=s;
     })
+
+     $(".marklabel").click(function(){
+       $(".qbox"+z+"").toggleClass("markr");
+       if(questions[z].mark==0)
+         questions[z].mark=1;
+       else
+        questions[z].mark=0;
+    })
+
+     $(".clearbut").click(function(){
+      $('input[name=q'+z+']').attr('checked',false);
+      questions[z].chosen='';
+    })
+
    }
 
-   $(".clearbut").click(function(){
-    $('input[name=q'+z+']').attr('checked',false);
-    questions[z].chosen='';
-  })
+
 
    $(".nextbut").click(function(){
     if(z==8){}
       else{
+        checkcolor(z)
+        $(".nobox").removeClass("selectq");
         z=z+1;
+        $(".qbox"+z+"").addClass("selectq");
         question(z);
       }
     });
@@ -371,12 +461,28 @@
    $(".prevbut").click(function(){
     if(z==0){}
       else{
+        checkcolor(z)
+        $(".nobox").removeClass("selectq");
         z=z-1;
+        $(".qbox"+z+"").addClass("selectq");
         question(z);
       }
     });
 
+   function checkcolor(z) {
+    if($(".qbox"+z+"").hasClass("markr")){
+    }
+    else{
+      if(questions[z].chosen!='')
+      {
+        $(".qbox"+z+"").removeClass("visited");
+        $(".qbox"+z+"").addClass("done");
+      }
+      else
+        $(".qbox"+z+"").addClass("visited");
+    }
+  }
 
-  </script>
+</script>
 </body>
 </html>
