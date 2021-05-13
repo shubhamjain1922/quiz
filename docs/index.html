@@ -100,7 +100,7 @@
     }
 
     .optionlabel {
-      width: 95%;
+      width: 85%;
       margin-left: 10px;
       cursor: pointer;
     }
@@ -147,6 +147,14 @@
 
     .submitbut {
       background: #00ad72;
+    }
+
+    .wrp1,.wrp2 {
+      padding: 10px;
+    }
+
+    .wrp1 {
+      padding-top: 20px;
     }
 
     @media (max-width: 991px) {
@@ -203,9 +211,7 @@
           <i class="fas fa-minus iconb"></i>
         </p>
 
-        <div class="qbox"></div>
-
-        <div class="optionbox"></div>
+        <div class="innerwrapper"></div>
 
         <div class="oboxfoot">
           <input type="checkbox" class="mark" id="mark" value="mark">
@@ -254,13 +260,14 @@
 
     var questions = [
     {
-      p: 'This is a paragraph question, so that you can check the format of paragraph question. To make this quiz interesting, all the questions are about me. You will find out about me which will help you in selecting me. Obviously you dont know me so you cant know the answers to the quiz, thats why answers are pretty obvious',
+      p: 'This is a paragraph question, so that you can check the format of paragraph question. To make this quiz interesting, all the questions are about me. You will find out about me which will help you in selecting me. Obviously you dont know me so you cant know the answers to the quiz, thats why answers are pretty obvious.',
       p1: 'point 1',
       p2: 'point 2',
       p3: 'point 3',
       question: 'This is a paragraph question and are you ready to know more about me?',
       choice: ['Yes','100% yes','a and b','none'],
       answer: 1,
+      chosen: '',
       type: 'p'
     },
     {
@@ -319,22 +326,57 @@
       var b = z+1;
       $(".qno").html(b);
       var a = questions[z];
+      $(".innerwrapper").empty();
+      if(a.type=="nop") {
+        $(".innerwrapper").append('<div class="qbox"></div><div class="optionbox"></div>');
+      }
+      else {
+        $(".innerwrapper").append('<div class="container-fluid"><div class="row"><div class="col-md-6 wrp1"><p>'+a.p+'</p><ul><li>'+a.p1+'</li><li>'+a.p2+'</li><li>'+a.p3+'</li></ul></div><div class="col-md-6 wrp2"><div class="qbox"></div><div class="optionbox"></div></div></div></div>');
+      }
       $(".qbox").html(a.question);
 
       $(".optionbox").empty();
       for(i=0;i<4;i++)
       {
-        $(".optionbox").append('<input type="radio" class="option" id="'+i+'" name="option" value="'+i+'"><label for="'+i+'" class="optionlabel">'+a.choice[i]+'</label><br>');
+        $(".optionbox").append('<input type="radio" class="option" id="'+i+'" name="q'+z+'" value="'+i+'"><label for="'+i+'" class="optionlabel">'+a.choice[i]+'</label><br>');
       }
-    }
 
-    $(".nextbut").click(function(){
-      if(z==8){}
-        else{
-          z=z+1;
-          question(z);
-        }
-      });
-    </script>
-  </body>
-  </html>
+      if(questions[z].chosen=='')
+      {
+      }
+      else
+      {
+       $('input[value='+questions[z].chosen+']').attr('checked',true);
+     }
+
+     $(".optionbox input").click(function(){
+      var s = $(this).val()
+      questions[z].chosen=s;
+    })
+   }
+
+   $(".clearbut").click(function(){
+    $('input[name=q'+z+']').attr('checked',false);
+    questions[z].chosen='';
+  })
+
+   $(".nextbut").click(function(){
+    if(z==8){}
+      else{
+        z=z+1;
+        question(z);
+      }
+    });
+
+   $(".prevbut").click(function(){
+    if(z==0){}
+      else{
+        z=z-1;
+        question(z);
+      }
+    });
+
+
+  </script>
+</body>
+</html>
