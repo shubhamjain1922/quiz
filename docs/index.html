@@ -198,13 +198,18 @@
     <div class="row" style="padding: 10px;">
       <div class="qwrapper">
         <p class="qhead">
-          Question : <span class="qno">3</span>/12
+          Question : <span class="qno">3</span>/9
           <i class="fas fa-times iconb"></i>
           <i class="fas fa-minus iconb"></i>
         </p>
 
         <div class="qbox">
-          What is the longest question you cN THINK OF?
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </div>
 
         <div class="optionbox">
@@ -239,7 +244,7 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
 
-    var qno = 12;
+    var qno = 9;
 
     for(i=0;i<qno;i++)
     {
@@ -262,6 +267,94 @@
     $(".submitbut").click(function(){
       window.location.href = "submit.html";
     })
+
+    var questions = [
+    {
+      p: 'This is a paragraph question, so that you can check the format of paragraph question. To make this quiz interesting, all the questions are about me. You will find out about me which will help you in selecting me. Obviously you dont know me so you cant know the answers to the quiz, thats why answers are pretty obvious',
+      p1: 'point 1'
+      p2: 'point 2'
+      p3: 'point 3'
+      question: 'This is a paragraph question and are you ready to know more about me',
+      choice1: 'Yes',
+      choice2: '100% yes',
+      choice3: 'a and b',
+      choice4: 'none',
+      answer: 1,
+      type: 'p'
+    },
+    {
+      question: 'Hello, I am Shubham Jain and I am a ',
+      choice1: 'Front-end developer',
+      choice2: 'Mechanic',
+      choice3: 'Doctor',
+      choice4: 'Lawyer',
+      answer: 1,
+      type: 'nop'
+    },
+    {
+      question: 'I am a CS student in  ',
+      choice1: 'NLU',
+      choice2: 'Madras Medical college',
+      choice3: 'IIIT Guwahati',
+      choice4: 'IIM ahmedabad',
+      answer: 3,
+      type: 'nop'
+    },
+    {
+      question: 'Number of internships I have completed -  ',
+      choice1: '100',
+      choice2: '1',
+      choice3: '1000',
+      choice4: '10000',
+      answer: 2,
+      type: 'nop'
+    },
+    {
+      question: 'Skills I have - ',
+      choice1: 'Reading minds',
+      choice2: 'car repair, scooter repair',
+      choice3: 'cleaning, cooking',
+      choice4: 'HTML, CSS, JS, Jquery, Bootstrap, RestAPI',
+      answer: 4,
+      type: 'nop'
+    },
+    {
+      question: 'My role in my prior internship ',
+      choice1: 'Javascript developer',
+      choice2: 'CEO',
+      choice3: 'Vice president',
+      choice4: 'Customer',
+      answer: 1,
+      type: 'nop'
+    },
+    {
+      question: 'I am also ',
+      choice1: 'PM of india',
+      choice2: 'Professor in IIT Delhi',
+      choice3: 'Microsoft Learn Student Ambassador',
+      choice4: 'Doctor in AIIMS',
+      answer: 3,
+      type: 'nop'
+    },
+    {
+      question: 'Do I have a laptop and active internet connection  ',
+      choice1: 'Yes',
+      choice2: 'Yeah',
+      choice3: 'Yup',
+      choice4: 'All of these',
+      answer: 4,
+      type: 'nop'
+    },
+    {
+      question: 'What score would you give to my project? ',
+      choice1: '1/10',
+      choice2: '-1/10',
+      choice3: '10/10',
+      choice4: '0/10',
+      answer: 3,
+      type: 'nop'
+    }
+    ]
   </script>
 </body>
 </html>
