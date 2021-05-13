@@ -49,18 +49,22 @@
       height: 80px;
       max-height: 80px;
       box-shadow: 0 0 5px black;
-      padding: 20px 20px;
-      overflow: auto;
+      padding: 20px;
+      padding-top: 15px;
+      padding-bottom: 25px;
+      overflow-y: hidden;
+      overflow-x: auto;
       white-space: nowrap; 
     }
 
     .nobox {
-      background: red;
+      background: #dcdcdc;
       border-radius: 50%;
       height: 40px;
       display: inline-block;
       width: 40px;
       margin-right: 5px;
+      cursor: pointer;
     }
 
     .number {
@@ -69,13 +73,50 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2em;
-      color: white;
+      font-size: 1em;
+    }
+
+    .qwrapper {
+      background: white;
+      box-shadow: 0 0 5px black;
+      padding: 10px;
+    }
+
+    .qhead {
+      font-size: 1.3em;
+    }
+
+    .iconb {
+      margin-left: 15px;
+      float: right;
+      font-size: 0.8em;
+      color: gray;
+    }
+
+    .qbox {
+      border-left: 5px solid #4995c0;
+      padding: 15px; 
+      margin-bottom: 15px;
+    }
+
+    label {
+      width: 95%;
+      margin-left: 10px;
+    }
+
+    .option {
+      margin: 10px 0;
     }
 
     @media (max-width: 991px) {
       .navbar-brand {
         font-size: 1.25rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      label {
+        width: 90%;
       }
     }
 
@@ -101,6 +142,33 @@
     </div>
   </div>
 
+  <div class="container" style="margin-top: 50px;">
+    <div class="row" style="padding: 10px;">
+      <div class="qwrapper">
+        <p class="qhead">
+          Question : <span class="qno">3</span>/12
+          <i class="fas fa-times iconb"></i>
+          <i class="fas fa-minus iconb"></i>
+        </p>
+
+        <div class="qbox">
+          What is the longest question you cN THINK OF?
+        </div>
+
+        <div class="optionbox">
+          <input type="radio" class="option 1" id="1" name="option" value="1">
+          <label for="1">Option 1</label><br>
+          <input type="radio" class="option 2" id="2" name="option" value="2">
+          <label for="2">Option 2</label><br>
+          <input type="radio" class="option 3" id="3" name="option" value="3">
+          <label for="3">Option 3</label><br>
+          <input type="radio" class="option 4" id="4" name="option" value="4">
+          <label for="4">Option 4</label><br>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
@@ -108,7 +176,7 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
 
-    var qno = 10;
+    var qno = 12;
 
     for(i=0;i<qno;i++)
     {
@@ -122,7 +190,7 @@
       var seconds = countDownTime % 60;
       var result = (minutes < 10 ? "0" + minutes : minutes) +" Min "+ ": " + (seconds  < 10 ? "0" + seconds : seconds)+" Secs";
       $('.timebox').html(result);
-      if(countDownTime == 0 ){ countDownTime = 60*60*60; }
+      if(countDownTime == 0 ){ countDownTime = 1; }
       countDownTime = countDownTime - 1;
       setTimeout(function(){ countDownTimer() }, 1000);
     }
