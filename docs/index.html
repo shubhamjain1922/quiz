@@ -46,9 +46,31 @@
 
     .palettebox {
       background: white;
-      height: 100px;
+      height: 80px;
+      max-height: 80px;
       box-shadow: 0 0 5px black;
-      padding: 10px;
+      padding: 20px 20px;
+      overflow: auto;
+      white-space: nowrap; 
+    }
+
+    .nobox {
+      background: red;
+      border-radius: 50%;
+      height: 40px;
+      display: inline-block;
+      width: 40px;
+      margin-right: 5px;
+    }
+
+    .number {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2em;
+      color: white;
     }
 
     @media (max-width: 991px) {
@@ -56,7 +78,6 @@
         font-size: 1.25rem;
       }
     }
-
 
   </style>
 </head>
@@ -80,11 +101,21 @@
     </div>
   </div>
 
+
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
+
+    var qno = 10;
+
+    for(i=0;i<qno;i++)
+    {
+      var a=i+1;
+      $(".palettebox").append('<div class="nobox"><p class="number">'+a+'</p></div>')
+    }
+
     var countDownTime = 600;
     function countDownTimer() {
       var minutes = parseInt( countDownTime / 60 ) % 60;
