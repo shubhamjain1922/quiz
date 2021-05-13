@@ -99,13 +99,31 @@
       margin-bottom: 15px;
     }
 
-    label {
+    .optionlabel {
       width: 95%;
       margin-left: 10px;
     }
 
     .option {
       margin: 10px 0;
+    }
+
+    .oboxfoot {
+      margin-top: 50px;
+      padding: 0 30px;
+    }
+
+    .marklabel {
+      margin-left: 7px;
+      margin-right: 200px;
+    }
+
+    .clearbut {
+      background:  #4995c0;
+      color: white;
+      padding: 10px 15px;
+      display: inline-block;
+      border-radius: 5px;
     }
 
     @media (max-width: 991px) {
@@ -115,8 +133,12 @@
     }
 
     @media (max-width: 768px) {
-      label {
+      .optionlabel {
         width: 90%;
+      }
+
+      .marklabel {
+        margin-right: 170px;
       }
     }
 
@@ -157,13 +179,19 @@
 
         <div class="optionbox">
           <input type="radio" class="option 1" id="1" name="option" value="1">
-          <label for="1">Option 1</label><br>
+          <label for="1" class="optionlabel">Option 1</label><br>
           <input type="radio" class="option 2" id="2" name="option" value="2">
-          <label for="2">Option 2</label><br>
+          <label for="2" class="optionlabel">Option 2</label><br>
           <input type="radio" class="option 3" id="3" name="option" value="3">
-          <label for="3">Option 3</label><br>
+          <label for="3" class="optionlabel">Option 3</label><br>
           <input type="radio" class="option 4" id="4" name="option" value="4">
-          <label for="4">Option 4</label><br>
+          <label for="4" class="optionlabel">Option 4</label><br>
+        </div>
+
+        <div class="oboxfoot">
+          <input type="checkbox" class="mark" id="mark" value="mark">
+          <label for="mark" class="marklabel">Mark for review</label>
+          <div class="clearbut">Clear</div>
         </div>
       </div>
     </div>
