@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/userastyle.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lodge Complaint</title>
+  </head>
+  <body>
+    <h1>Lodge a Complaint</h1>
+    <form method="POST">
+      
+      <div class="form__fieldset">
+        <label for="uid" class="form__label">UserID:</label>
+        <input type="text" name="uid" id="uid">
+      </div>
+
+      <div class="form__fieldset">
+        <label for="complaint" class="form__label">Complaint:</label>
+        <textarea name="complaint" cols="50" rows="10" id="complaint"></textarea>
+      </div>
+
+      <div class="sub">
+        <input
+          class="form__submit form__input"
+          type="submit"
+          value="Submit"/>
+
+      </div>
+    </form>
+  </body>
+</html>
